@@ -776,31 +776,46 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script type="module" src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script type="module" src="assets/vendor/php-email-form/validate.js"></script>
-  <script type="module" src="assets/vendor/aos/aos.js"></script>
-  <script type="module" src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script type="module" src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script type="module" src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script type="module" src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script type="module" src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <!-- <script type="module" src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script> -->
-
-  <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script type="module" src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <!-- <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script> -->
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  <script type="module"  src="assets/js/main.js"></script>
-  <script type="module"  src="assets/js/cutsom.js"></script>
+  <script src="assets/js/main.js"></script>
 
 
 
-<!-- 
 
-<script type="module">
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+<script>
+
+  const lenis = new Lenis({
+    // Valeur entre 0 et 1
+    // Valeur par défaut : 0,1
+    // Plus la valeur est faible, plus le scroll sera fluide
+    lerp: 0.05, 
+    // Valeur par défaut : 1
+    // Plus la valeur est haute, plus le défilement sera rapide 
+    wheelMultiplier: 1, 
+  });
+  
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+  
 
       // Update progress bar on scroll
-    window.addEventListener('scroll', updateProgressBar);
+      window.addEventListener('scroll', updateProgressBar);
     window.addEventListener('resize', updateProgressBar);
 
     function updateProgressBar() {
@@ -815,7 +830,7 @@
   </script>
 
 
-<script type="module">
+<script>
   const coords = { x: 0, y: 0 };
   const circles = document.querySelectorAll(".circle");
   
@@ -892,7 +907,7 @@
   }
   
   animateCircles();
-  </script> -->
+  </script>
 
 </body>
 
