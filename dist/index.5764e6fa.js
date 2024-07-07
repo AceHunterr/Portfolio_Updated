@@ -584,6 +584,20 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"1s8fM":[function(require,module,exports) {
+const lenis = new Lenis({
+    // Valeur entre 0 et 1
+    // Valeur par défaut : 0,1
+    // Plus la valeur est faible, plus le scroll sera fluide
+    lerp: 0.05,
+    // Valeur par défaut : 1
+    // Plus la valeur est haute, plus le défilement sera rapide 
+    wheelMultiplier: 1
+});
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
 // Update progress bar on scroll
 window.addEventListener("scroll", updateProgressBar);
 window.addEventListener("resize", updateProgressBar);
