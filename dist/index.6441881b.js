@@ -595,6 +595,8 @@ var _glightbox = require("glightbox");
 var _glightboxDefault = parcelHelpers.interopDefault(_glightbox);
 var _isotopeLayout = require("isotope-layout");
 var _isotopeLayoutDefault = parcelHelpers.interopDefault(_isotopeLayout);
+var _gsap = require("gsap");
+var _gsapDefault = parcelHelpers.interopDefault(_gsap);
 (function() {
     "use strict";
     // const lenis = new Lenis()
@@ -792,9 +794,58 @@ var _isotopeLayoutDefault = parcelHelpers.interopDefault(_isotopeLayout);
     }
     window.addEventListener("load", navmenuScrollspy);
     document.addEventListener("scroll", navmenuScrollspy);
+    // Resume Button
+    const magneto = document.querySelector(".magneto");
+    const magnetoText = document.querySelector(".magneto .text");
+    const activateMagneto = (event)=>{
+        let boundBox = magneto.getBoundingClientRect();
+        const magnetoStrength = 40;
+        const magnetoTextStrength = 80;
+        const newX = (event.clientX - boundBox.left) / magneto.offsetWidth - 0.5;
+        const newY = (event.clientY - boundBox.top) / magneto.offsetHeight - 0.5;
+        (0, _gsapDefault.default).to(magneto, {
+            duration: 1,
+            x: newX * magnetoStrength * 10,
+            y: newY * magnetoStrength * 10,
+            ease: "power4.out"
+        });
+        (0, _gsapDefault.default).to(magnetoText, {
+            duration: 1,
+            x: newX * magnetoTextStrength,
+            y: newY * magnetoTextStrength,
+            ease: "power4.out"
+        });
+    };
+    const resetMagneto = (event)=>{
+        (0, _gsapDefault.default).to(magneto, {
+            duration: 1,
+            x: 0,
+            y: 0,
+            ease: "elastic.out"
+        });
+        (0, _gsapDefault.default).to(magnetoText, {
+            duration: 1,
+            x: 0,
+            y: 0,
+            ease: "elastic.out"
+        });
+    };
+    magneto.addEventListener("mousemove", activateMagneto);
+    magneto.addEventListener("mouseleave", resetMagneto);
+    document.addEventListener("DOMContentLoaded", ()=>{
+        const downloadButton = document.getElementById("downloadBtn");
+        downloadButton.addEventListener("click", ()=>{
+            const link = document.createElement("a");
+            link.href = "https://drive.google.com/uc?export=download&id=1aaXIvnLJd3d05Y4kIxQJoCpZ-PVZUkVn"; // Google Drive direct download link
+            link.download = "Mehul_Resume.pdf"; // The default filename for the download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    });
 })();
 
-},{"aos":"eRzTM","typed.js":"6M0L2","imagesloaded":"aYzyZ","glightbox":"kBGcU","isotope-layout":"aHntc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eRzTM":[function(require,module,exports) {
+},{"aos":"eRzTM","typed.js":"6M0L2","imagesloaded":"aYzyZ","glightbox":"kBGcU","isotope-layout":"aHntc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","gsap":"fPSuC"}],"eRzTM":[function(require,module,exports) {
 !function(e, t) {
     module.exports = t();
 }(this, function() {
@@ -1436,306 +1487,7 @@ var s = {
     }, t;
 }();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"aYzyZ":[function(require,module,exports) {
-/*!
- * imagesLoaded v5.0.0
- * JavaScript is all like "You images are done yet or what?"
- * MIT License
- */ (function(window1, factory) {
-    // universal module definition
-    if (0, module.exports) // CommonJS
-    module.exports = factory(window1, require("493897767f7120e"));
-    else // browser global
-    window1.imagesLoaded = factory(window1, window1.EvEmitter);
-})(typeof window !== "undefined" ? window : this, function factory(window1, EvEmitter) {
-    let $ = window1.jQuery;
-    let console = window1.console;
-    // -------------------------- helpers -------------------------- //
-    // turn element or nodeList into an array
-    function makeArray(obj) {
-        // use object if already an array
-        if (Array.isArray(obj)) return obj;
-        let isArrayLike = typeof obj == "object" && typeof obj.length == "number";
-        // convert nodeList to array
-        if (isArrayLike) return [
-            ...obj
-        ];
-        // array of single index
-        return [
-            obj
-        ];
-    }
-    // -------------------------- imagesLoaded -------------------------- //
-    /**
- * @param {[Array, Element, NodeList, String]} elem
- * @param {[Object, Function]} options - if function, use as callback
- * @param {Function} onAlways - callback function
- * @returns {ImagesLoaded}
- */ function ImagesLoaded(elem, options, onAlways) {
-        // coerce ImagesLoaded() without new, to be new ImagesLoaded()
-        if (!(this instanceof ImagesLoaded)) return new ImagesLoaded(elem, options, onAlways);
-        // use elem as selector string
-        let queryElem = elem;
-        if (typeof elem == "string") queryElem = document.querySelectorAll(elem);
-        // bail if bad element
-        if (!queryElem) {
-            console.error(`Bad element for imagesLoaded ${queryElem || elem}`);
-            return;
-        }
-        this.elements = makeArray(queryElem);
-        this.options = {};
-        // shift arguments if no options set
-        if (typeof options == "function") onAlways = options;
-        else Object.assign(this.options, options);
-        if (onAlways) this.on("always", onAlways);
-        this.getImages();
-        // add jQuery Deferred object
-        if ($) this.jqDeferred = new $.Deferred();
-        // HACK check async to allow time to bind listeners
-        setTimeout(this.check.bind(this));
-    }
-    ImagesLoaded.prototype = Object.create(EvEmitter.prototype);
-    ImagesLoaded.prototype.getImages = function() {
-        this.images = [];
-        // filter & find items if we have an item selector
-        this.elements.forEach(this.addElementImages, this);
-    };
-    const elementNodeTypes = [
-        1,
-        9,
-        11
-    ];
-    /**
- * @param {Node} elem
- */ ImagesLoaded.prototype.addElementImages = function(elem) {
-        // filter siblings
-        if (elem.nodeName === "IMG") this.addImage(elem);
-        // get background image on element
-        if (this.options.background === true) this.addElementBackgroundImages(elem);
-        // find children
-        // no non-element nodes, #143
-        let { nodeType } = elem;
-        if (!nodeType || !elementNodeTypes.includes(nodeType)) return;
-        let childImgs = elem.querySelectorAll("img");
-        // concat childElems to filterFound array
-        for (let img of childImgs)this.addImage(img);
-        // get child background images
-        if (typeof this.options.background == "string") {
-            let children = elem.querySelectorAll(this.options.background);
-            for (let child of children)this.addElementBackgroundImages(child);
-        }
-    };
-    const reURL = /url\((['"])?(.*?)\1\)/gi;
-    ImagesLoaded.prototype.addElementBackgroundImages = function(elem) {
-        let style = getComputedStyle(elem);
-        // Firefox returns null if in a hidden iframe https://bugzil.la/548397
-        if (!style) return;
-        // get url inside url("...")
-        let matches = reURL.exec(style.backgroundImage);
-        while(matches !== null){
-            let url = matches && matches[2];
-            if (url) this.addBackground(url, elem);
-            matches = reURL.exec(style.backgroundImage);
-        }
-    };
-    /**
- * @param {Image} img
- */ ImagesLoaded.prototype.addImage = function(img) {
-        let loadingImage = new LoadingImage(img);
-        this.images.push(loadingImage);
-    };
-    ImagesLoaded.prototype.addBackground = function(url, elem) {
-        let background = new Background(url, elem);
-        this.images.push(background);
-    };
-    ImagesLoaded.prototype.check = function() {
-        this.progressedCount = 0;
-        this.hasAnyBroken = false;
-        // complete if no images
-        if (!this.images.length) {
-            this.complete();
-            return;
-        }
-        /* eslint-disable-next-line func-style */ let onProgress = (image, elem, message)=>{
-            // HACK - Chrome triggers event before object properties have changed. #83
-            setTimeout(()=>{
-                this.progress(image, elem, message);
-            });
-        };
-        this.images.forEach(function(loadingImage) {
-            loadingImage.once("progress", onProgress);
-            loadingImage.check();
-        });
-    };
-    ImagesLoaded.prototype.progress = function(image, elem, message) {
-        this.progressedCount++;
-        this.hasAnyBroken = this.hasAnyBroken || !image.isLoaded;
-        // progress event
-        this.emitEvent("progress", [
-            this,
-            image,
-            elem
-        ]);
-        if (this.jqDeferred && this.jqDeferred.notify) this.jqDeferred.notify(this, image);
-        // check if completed
-        if (this.progressedCount === this.images.length) this.complete();
-        if (this.options.debug && console) console.log(`progress: ${message}`, image, elem);
-    };
-    ImagesLoaded.prototype.complete = function() {
-        let eventName = this.hasAnyBroken ? "fail" : "done";
-        this.isComplete = true;
-        this.emitEvent(eventName, [
-            this
-        ]);
-        this.emitEvent("always", [
-            this
-        ]);
-        if (this.jqDeferred) {
-            let jqMethod = this.hasAnyBroken ? "reject" : "resolve";
-            this.jqDeferred[jqMethod](this);
-        }
-    };
-    // --------------------------  -------------------------- //
-    function LoadingImage(img) {
-        this.img = img;
-    }
-    LoadingImage.prototype = Object.create(EvEmitter.prototype);
-    LoadingImage.prototype.check = function() {
-        // If complete is true and browser supports natural sizes,
-        // try to check for image status manually.
-        let isComplete = this.getIsImageComplete();
-        if (isComplete) {
-            // report based on naturalWidth
-            this.confirm(this.img.naturalWidth !== 0, "naturalWidth");
-            return;
-        }
-        // If none of the checks above matched, simulate loading on detached element.
-        this.proxyImage = new Image();
-        // add crossOrigin attribute. #204
-        if (this.img.crossOrigin) this.proxyImage.crossOrigin = this.img.crossOrigin;
-        this.proxyImage.addEventListener("load", this);
-        this.proxyImage.addEventListener("error", this);
-        // bind to image as well for Firefox. #191
-        this.img.addEventListener("load", this);
-        this.img.addEventListener("error", this);
-        this.proxyImage.src = this.img.currentSrc || this.img.src;
-    };
-    LoadingImage.prototype.getIsImageComplete = function() {
-        // check for non-zero, non-undefined naturalWidth
-        // fixes Safari+InfiniteScroll+Masonry bug infinite-scroll#671
-        return this.img.complete && this.img.naturalWidth;
-    };
-    LoadingImage.prototype.confirm = function(isLoaded, message) {
-        this.isLoaded = isLoaded;
-        let { parentNode } = this.img;
-        // emit progress with parent <picture> or self <img>
-        let elem = parentNode.nodeName === "PICTURE" ? parentNode : this.img;
-        this.emitEvent("progress", [
-            this,
-            elem,
-            message
-        ]);
-    };
-    // ----- events ----- //
-    // trigger specified handler for event type
-    LoadingImage.prototype.handleEvent = function(event) {
-        let method = "on" + event.type;
-        if (this[method]) this[method](event);
-    };
-    LoadingImage.prototype.onload = function() {
-        this.confirm(true, "onload");
-        this.unbindEvents();
-    };
-    LoadingImage.prototype.onerror = function() {
-        this.confirm(false, "onerror");
-        this.unbindEvents();
-    };
-    LoadingImage.prototype.unbindEvents = function() {
-        this.proxyImage.removeEventListener("load", this);
-        this.proxyImage.removeEventListener("error", this);
-        this.img.removeEventListener("load", this);
-        this.img.removeEventListener("error", this);
-    };
-    // -------------------------- Background -------------------------- //
-    function Background(url, element) {
-        this.url = url;
-        this.element = element;
-        this.img = new Image();
-    }
-    // inherit LoadingImage prototype
-    Background.prototype = Object.create(LoadingImage.prototype);
-    Background.prototype.check = function() {
-        this.img.addEventListener("load", this);
-        this.img.addEventListener("error", this);
-        this.img.src = this.url;
-        // check if image is already complete
-        let isComplete = this.getIsImageComplete();
-        if (isComplete) {
-            this.confirm(this.img.naturalWidth !== 0, "naturalWidth");
-            this.unbindEvents();
-        }
-    };
-    Background.prototype.unbindEvents = function() {
-        this.img.removeEventListener("load", this);
-        this.img.removeEventListener("error", this);
-    };
-    Background.prototype.confirm = function(isLoaded, message) {
-        this.isLoaded = isLoaded;
-        this.emitEvent("progress", [
-            this,
-            this.element,
-            message
-        ]);
-    };
-    // -------------------------- jQuery -------------------------- //
-    ImagesLoaded.makeJQueryPlugin = function(jQuery) {
-        jQuery = jQuery || window1.jQuery;
-        if (!jQuery) return;
-        // set local variable
-        $ = jQuery;
-        // $().imagesLoaded()
-        $.fn.imagesLoaded = function(options, onAlways) {
-            let instance = new ImagesLoaded(this, options, onAlways);
-            return instance.jqDeferred.promise($(this));
-        };
-    };
-    // try making plugin
-    ImagesLoaded.makeJQueryPlugin();
-    // --------------------------  -------------------------- //
-    return ImagesLoaded;
-});
-
-},{"493897767f7120e":"7rCHo"}],"kBGcU":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kBGcU":[function(require,module,exports) {
 !function(e, t) {
     module.exports = t();
 }(this, function() {

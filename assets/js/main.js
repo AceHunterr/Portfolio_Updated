@@ -3,6 +3,7 @@ import Typed from 'typed.js';
 import imagesLoaded from 'imagesloaded';
 import GLightbox from 'glightbox';
 import Isotope from 'isotope-layout';
+import gsap from 'gsap';
 
 (function() {
   "use strict";
@@ -270,5 +271,63 @@ import Isotope from 'isotope-layout';
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+
+  // Resume Button
+  const magneto = document.querySelector('.magneto');
+  const magnetoText = document.querySelector('.magneto .text');
+  
+  const activateMagneto = (event) => {
+      let boundBox = magneto.getBoundingClientRect();
+      const magnetoStrength = 40;
+      const magnetoTextStrength = 80;
+      const newX = ((event.clientX - boundBox.left) / magneto.offsetWidth) - 0.5;
+      const newY = ((event.clientY - boundBox.top) / magneto.offsetHeight) - 0.5;
+  
+      gsap.to(magneto, {
+          duration: 1,
+          x: newX * magnetoStrength * 10,
+          y: newY * magnetoStrength * 10,
+          ease: 'power4.out'
+      });
+      gsap.to(magnetoText, {
+          duration: 1,
+          x: newX * magnetoTextStrength,
+          y: newY * magnetoTextStrength,
+          ease: 'power4.out'
+      });
+  }
+  
+  const resetMagneto = (event) => {
+      gsap.to(magneto, {
+          duration: 1,
+          x: 0,
+          y: 0,
+          ease: 'elastic.out'
+      });
+      gsap.to(magnetoText, {
+          duration: 1,
+          x: 0,
+          y: 0,
+          ease: 'elastic.out'
+      });
+  }
+  
+  magneto.addEventListener('mousemove', activateMagneto);
+  magneto.addEventListener('mouseleave', resetMagneto);
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const downloadButton = document.getElementById('downloadBtn');
+
+    downloadButton.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.href = 'https://drive.google.com/uc?export=download&id=1aaXIvnLJd3d05Y4kIxQJoCpZ-PVZUkVn'; // Google Drive direct download link
+        link.download = 'Mehul_Resume.pdf'; // The default filename for the download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+});
 
 })();

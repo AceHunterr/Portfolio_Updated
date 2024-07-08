@@ -7,6 +7,7 @@
   --default-color: #d9dadb;
   --heading-color: #fff;
   --accent-color: #14b32f;
+  --alternate-accent-color: #088c1e;
   --contrast-color: #050d18;
   --nav-color: #a8a9b4;
   --nav-hover-color: #fff;
@@ -651,6 +652,42 @@ section, .section {
   left: -9px;
 }
 
+.btn-row {
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.magneto {
+  background-color: var(--alternate-accent-color);
+  color: var(--default-color);
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 15rem;
+  display: flex;
+}
+
+.magneto .text {
+  font-size: 32px;
+}
+
+@media (width <= 768px) {
+  .magneto {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .magneto .text {
+    font-size: 20px;
+  }
+}
+
 .portfolio {
   --background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
 }
@@ -700,6 +737,7 @@ section, .section {
 
 .portfolio .portfolio-content img {
   transition: all .3s;
+  transform: scale(1.2);
 }
 
 .portfolio .portfolio-content .portfolio-info {
@@ -718,7 +756,9 @@ section, .section {
   padding: 5px 10px;
   font-size: 14px;
   font-weight: 400;
+  transition-property: opacity, transform;
   display: inline-block;
+  transform: translate3d(-6rem, 0, 0);
 }
 
 .portfolio .portfolio-content .portfolio-info p {
@@ -726,21 +766,25 @@ section, .section {
   color: #fffc;
   font-size: 16px;
   font-weight: 600;
+  transition-property: opacity, transform;
   display: inline-block;
   position: absolute;
   bottom: 10px;
   left: 0;
   right: 0;
+  transform: translate3d(0, 6rem, 0);
 }
 
 .portfolio .portfolio-content .portfolio-info .preview-link, .portfolio .portfolio-content .portfolio-info .details-link {
   color: #fff;
+  opacity: 0;
   font-size: 26px;
   line-height: 1.2;
-  transition: all .3s;
+  transition: all .5s .1s;
   position: absolute;
   top: calc(50% - 14px);
   left: calc(50% - 40px);
+  transform: translate3d(0, 2rem, 0)rotate(360deg);
 }
 
 .portfolio .portfolio-content .portfolio-info .preview-link:hover, .portfolio .portfolio-content .portfolio-info .details-link:hover {
@@ -757,8 +801,19 @@ section, .section {
   opacity: 1;
 }
 
+.portfolio .portfolio-content:hover h4, .portfolio .portfolio-content:hover p, .portfolio .portfolio-content:hover .preview-link, .portfolio .portfolio-content:hover .details-link {
+  opacity: 1;
+  transition-duration: .6s;
+  transform: translate3d(0, 0, 0)rotate(0);
+}
+
+.portfolio .portfolio-content:before, .portfolio h4, .portfolio p {
+  transition-duration: .6s;
+  transition-timing-function: ease-in-out;
+}
+
 .portfolio .portfolio-content:hover img {
-  transform: scale(1.1);
+  transform: scale(1);
 }
 
 .services .service-item {
