@@ -106,3 +106,9 @@ requestAnimationFrame(animateCircles);
 }
 
 animateCircles();
+
+
+function goGallery() {
+    window.location.href = '/gallery'; 
+}
+
