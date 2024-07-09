@@ -25,7 +25,7 @@ preloadImages('.grid__item-img').then( _ => {
 		
 		const image = item.querySelector('.grid__item-img');
 
-		const xPercentRandomVal = gsap.utils.random(-100,100);
+		const xPercentRandomVal = gsap.utils.random(-70,70);
 
 		gsap.timeline()
 		.addLabel('start', 0)

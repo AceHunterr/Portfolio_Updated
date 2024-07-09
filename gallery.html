@@ -4,14 +4,14 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Grid Scroll Animations | Demo 3 | Codrops</title>
+	<title>My Asthetics</title>
 	<meta name="description" content="Various effects for images when scrolling a page." />
 	<meta name="keywords" content="scroll, effect, animation, image, gsap, lenis" />
 	<meta name="author" content="Codrops" />
 	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
 	<link rel="stylesheet" href="https://use.typekit.net/ont3ybf.css">
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/main.css" /> -->
 	<link rel="stylesheet" type="text/css" href="assets/css/gallery.css" />
-	<link rel="stylesheet" type="text/css" href="assets/css/main.css" />
 	<script>
 	document.documentElement.className = "js";
 	var supportsCssVars = function() { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e };
@@ -19,6 +19,8 @@
 	</script>
 	<script src="//tympanus.net/codrops/adpacks/analytics.js"></script>
 	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 	<style>
 
 		html.lenis {
@@ -68,6 +70,36 @@
 	.aos-animate-scroll-up {
 	  opacity: 0;
 	}
+
+
+.home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #4caf50;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensure it stays on top */
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #0a880e;
+}
+
+.home-button i {
+    pointer-events: none; /* Ensure the icon doesn't interfere with the button click */
+}
+
 		</style>
 	
 </head>
@@ -75,6 +107,10 @@
 <body class="gallery-content loading">
 	<main>
 		<div id="progressBar"></div>
+
+		<button class="home-button" onclick="goHome()">
+			<i class="fas fa-home"></i>
+		</button>
 
 		<div class="circle"></div>
 		<div class="circle"></div>
@@ -100,186 +136,241 @@
 		<div class="content">
 			<div class="grid">
 				<div class="grid__item" style="--r: 1;--c: 1;">
-					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/1.jpg);"></div>
 				</div>
+
 				<div class="grid__item" style="--r: 1;--c: 3;">
-					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/2.jpg);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 1;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/3.jpg);"></div>
 				</div>
 
 				<div class="grid__item" style="--r: 2;--c: 2;">
-					<div class="grid__item-img" style="background-image:url(img/2.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 2;--c: 4;">
-					<div class="grid__item-img" style="background-image:url(img/19.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 3;--c: 3;">
-					<div class="grid__item-img" style="background-image:url(img/3.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 3;--c: 6;">
-					<div class="grid__item-img" style="background-image:url(img/3.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/4.jpg);"></div>
 				</div>
 
-				<div class="grid__item" style="--r: 4;--c: 1;">
-					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+				<div class="grid__item" style="--r: 2;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/5.jpg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 4;--c: 2;">
-					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+
+				<div class="grid__item" style="--r: 2;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/6.jpg);"></div>
 				</div>
+
+				<div class="grid__item" style="--r: 3;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/7.jpg);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 3;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/8.jpg);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 3;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/9.jpg);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 4;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/10.jpg);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 4;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/11.jpg);"></div>
+				</div>
+
+
 				<div class="grid__item" style="--r: 5;--c: 5;">
-					<div class="grid__item-img" style="background-image:url(img/2.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/12.jpg);"></div>
 				</div>
+				<div class="grid__item" style="--r: 5;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/13.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 5;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/14.jpg);"></div>
+				</div>
+
+
 				<div class="grid__item" style="--r: 6;--c: 1;">
-					<div class="grid__item-img" style="background-image:url(img/19.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/15.jpg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 6;--c: 5;">
-					<div class="grid__item-img" style="background-image:url(img/3.jpg);"></div>
+				<div class="grid__item" style="--r: 6;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/16.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 6;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/17.jpeg);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 7;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/18.jpeg);"></div>
 				</div>
 				<div class="grid__item" style="--r: 7;--c: 3;">
-					<div class="grid__item-img" style="background-image:url(img/3.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/19.jpeg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 7;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/20.jpeg);"></div>
 				</div>
 
 				<div class="grid__item" style="--r: 8;--c: 1;">
-					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/21.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 8;--c: 3;">
-					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+				<div class="grid__item" style="--r: 8;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/22.jpeg);"></div>
 				</div>
+
+
 				<div class="grid__item" style="--r: 9;--c: 2;">
-					<div class="grid__item-img" style="background-image:url(img/2.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/23.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 9;--c: 5;">
-					<div class="grid__item-img" style="background-image:url(img/19.jpg);"></div>
+				<div class="grid__item" style="--r: 9;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/24.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 10;--c: 2;">
-					<div class="grid__item-img" style="background-image:url(img/3.jpg);"></div>
+
+
+				<div class="grid__item" style="--r: 10;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/25.jpeg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 10;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/26.jpeg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 10;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/27.jpeg);"></div>
+				</div>
+
+
+
+				<div class="grid__item" style="--r: 11;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/28.jpeg);"></div>
 				</div>
 				<div class="grid__item" style="--r: 11;--c: 4;">
-					<div class="grid__item-img" style="background-image:url(img/3.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/29.jpeg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 11;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/30.jpeg);"></div>
 				</div>
 
 
 
+				<div class="grid__item" style="--r: 12;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/31.jpeg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 12;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/32.jpeg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 12;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/33.jpeg);"></div>
+				</div>
+
+				
+				<div class="grid__item" style="--r: 13;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/34.jpeg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 13;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/35.jpeg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 13;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/36.jpeg);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 14;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/37.jpeg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 14;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/38.jpeg);"></div>
+				</div>
 
 
-				<div class="grid__item" style="--r: 4;--c: 2;">
-					<div class="grid__item-img" style="background-image:url(img/4.jpg);"></div>
+				<div class="grid__item" style="--r: 15;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/39.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 4;--c: 5;">
-					<div class="grid__item-img" style="background-image:url(img/4.jpg);"></div>
+				<div class="grid__item" style="--r: 15;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/40.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 5;--c: 8;">
-					<div class="grid__item-img" style="background-image:url(img/5.jpg);"></div>
+				<div class="grid__item" style="--r: 15;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/41.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 6;--c: 2;">
-					<div class="grid__item-img" style="background-image:url(img/1.jpg);"></div>
+
+				<div class="grid__item" style="--r: 16;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/42.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 7;--c: 3;">
-					<div class="grid__item-img" style="background-image:url(img/7.jpg);"></div>
+
+				<div class="grid__item" style="--r: 17;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/43.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 8;--c: 7;">
-					<div class="grid__item-img" style="background-image:url(img/8.jpg);"></div>
+				<div class="grid__item" style="--r: 17;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/44.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 9;--c: 1;">
-					<div class="grid__item-img" style="background-image:url(img/9.jpg);"></div>
+				<div class="grid__item" style="--r: 17;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/45.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 9;--c: 6;">
-					<div class="grid__item-img" style="background-image:url(img/18.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 10;--c: 4;">
-					<div class="grid__item-img" style="background-image:url(img/10.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 11;--c: 2;">
-					<div class="grid__item-img" style="background-image:url(img/11.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 12;--c: 6;">
-					<div class="grid__item-img" style="background-image:url(img/12.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 13;--c: 3;">
-					<div class="grid__item-img" style="background-image:url(img/13.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 14;--c: 5;">
-					<div class="grid__item-img" style="background-image:url(img/14.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 15;--c: 1;">
-					<div class="grid__item-img" style="background-image:url(img/15.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 16;--c: 2;">
-					<div class="grid__item-img" style="background-image:url(img/16.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 17;--c: 8;">
-					<div class="grid__item-img" style="background-image:url(img/17.jpg);"></div>
+
+				<div class="grid__item" style="--r: 18;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/46.jpeg);"></div>
 				</div>
 				<div class="grid__item" style="--r: 18;--c: 3;">
-					<div class="grid__item-img" style="background-image:url(img/18.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/47.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 19;--c: 5;">
-					<div class="grid__item-img" style="background-image:url(img/19.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 20;--c: 4;">
-					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+				<div class="grid__item" style="--r: 18;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/48.jpeg);"></div>
 				</div>
 
-				<div class="grid__item" style="--r: 21;--c: 2;">
-					<div class="grid__item-img" style="background-image:url(img/1.jpg);"></div>
+				<div class="grid__item" style="--r: 19;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/49.jpeg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 22;--c: 7;">
-					<div class="grid__item-img" style="background-image:url(img/2.jpg);"></div>
+				<div class="grid__item" style="--r: 19;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/50.jpeg);"></div>
 				</div>
+				<div class="grid__item" style="--r: 19;--c: 6;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/51.jpg);"></div>
+				</div>
+
+				
+				<div class="grid__item" style="--r: 20;--c: 1;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/52.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 20;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/53.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 20;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/54.jpg);"></div>
+				</div>
+
+				
+				
+				<div class="grid__item" style="--r: 21;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/55.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 21;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/56.jpg);"></div>
+				</div>
+
+				<div class="grid__item" style="--r: 22;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/57.jpg);"></div>
+				</div>
+				<div class="grid__item" style="--r: 22;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/58.jpg);"></div>
+				</div>
+
+				
 				<div class="grid__item" style="--r: 23;--c: 1;">
-					<div class="grid__item-img" style="background-image:url(img/3.jpg);"></div>
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/59.jpg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 24;--c: 5;">
-					<div class="grid__item-img" style="background-image:url(img/4.jpg);"></div>
+				<div class="grid__item" style="--r: 23;--c: 3;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/60.jpg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 25;--c: 4;">
-					<div class="grid__item-img" style="background-image:url(img/5.jpg);"></div>
+				<div class="grid__item" style="--r: 23;--c: 5;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/61.jpg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 26;--c: 2;">
-					<div class="grid__item-img" style="background-image:url(img/6.jpg);"></div>
+
+				
+				<div class="grid__item" style="--r: 24;--c: 2;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/62.jpg);"></div>
 				</div>
-				<div class="grid__item" style="--r: 27;--c: 3;">
-					<div class="grid__item-img" style="background-image:url(img/7.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 28;--c: 6;">
-					<div class="grid__item-img" style="background-image:url(img/8.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 29;--c: 5;">
-					<div class="grid__item-img" style="background-image:url(img/9.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 30;--c: 4;">
-					<div class="grid__item-img" style="background-image:url(img/10.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 31;--c: 1;">
-					<div class="grid__item-img" style="background-image:url(img/11.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 32;--c: 6;">
-					<div class="grid__item-img" style="background-image:url(img/12.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 33;--c: 3;">
-					<div class="grid__item-img" style="background-image:url(img/13.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 34;--c: 5;">
-					<div class="grid__item-img" style="background-image:url(img/14.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 35;--c: 1;">
-					<div class="grid__item-img" style="background-image:url(img/15.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 36;--c: 8;">
-					<div class="grid__item-img" style="background-image:url(img/16.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 37;--c: 6;">
-					<div class="grid__item-img" style="background-image:url(img/17.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 38;--c: 3;">
-					<div class="grid__item-img" style="background-image:url(img/18.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 39;--c: 5;">
-					<div class="grid__item-img" style="background-image:url(img/19.jpg);"></div>
-				</div>
-				<div class="grid__item" style="--r: 40;--c: 4;">
-					<div class="grid__item-img" style="background-image:url(img/20.jpg);"></div>
+				<div class="grid__item" style="--r: 24;--c: 4;">
+					<div class="grid__item-img" style="background-image:url(assets/gallery-img/63.jpg);"></div>
 				</div>
 			</div>
+			
 			<div class="cover">
 				<!-- <h2 class="cover__title">My Asthetics</h2>
 				<h3 class="cover__subtitle">並外れたファッション</h3> -->
@@ -287,17 +378,20 @@
 					<text x="50%" y="50%" dy=".32em" text-anchor="middle" class="text-body">
 						MY ASTHETICS
 					</text>
-					<!-- <text x="50%" y="50%" dy=".32em" dx ="2.1em" text-anchor="middle" class="text-body">
-						.
-					</text> -->
-	
 				</svg>
+				<h3 class="cover__subtitle">View on desktop for best experience.</h3> 
 			</div>
 			<!-- <div class="footer">
 				<p>From the dawn of civilisation onwards crowds have always undergone the influence of illusions. It is to the creators of illusions that they have raised more temples, statues, and altars than to any other class of men. </p>
 			</div> -->
 		</div>
 	</main>
+
+	<script>
+		function goHome() {
+    window.location.href = '/'; // Adjust the URL as needed
+}
+	</script>
 
 	<script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js"></script>
 	<script type="module" src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>

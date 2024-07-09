@@ -3,6 +3,26 @@
 *::before {
 	box-sizing: border-box;
 }
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px; /* Adjust scrollbar width */
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent /* Color of the track */
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent-color); /* Accent color for the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners for the thumb */
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color); /* Darker shade of the accent color on hover */
+  }
 
 :root {
 	font-size: 18px;
@@ -42,7 +62,7 @@ body {
 .gallery-content {
 	--color-text: var(--accent-color);
 	--color-text-alt: var(--alternate-accent-color);
-	--color-bg: var(--background-color);
+	--color-bg: var(--contrast-color);
 	--color-bg-alt: var(--contrast-color);
 	--color-link-hover: var(--default-color);
 }
@@ -61,7 +81,7 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: var(--color-bg);
+	background: var(--contrast-color);
 }
 
 .js .loading::after {
@@ -72,7 +92,7 @@ body {
 	margin: -30px 0 0 -30px;
 	border-radius: 50%;
 	opacity: 0.4;
-	background: var(--color-link);
+	background: var(--accent-color);
 	animation: loaderAnim 0.7s linear infinite alternate forwards;
 
 }
@@ -88,7 +108,7 @@ body {
 	position: relative;
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(6,1fr);
+	grid-template-columns: repeat(8,1fr);
 }
 
 .grid__item {
@@ -100,8 +120,9 @@ body {
 }
 
 .grid__item-img {
+
 	position: relative;
-	width: 100%;
+	width: 250px;
 	height: 250px;
 	aspect-ratio: 1;
 	background-size: cover;
@@ -158,6 +179,7 @@ svg text.dot{
 		stroke-width: 1;
 		stroke-dashoffset: 25%;
 		stroke-dasharray: 0 32%;
+		opacity: 0.5;
 	}
 	15%{
 		stroke: var(--stroke1);
@@ -173,23 +195,25 @@ svg text.dot{
 	75%{
 		stroke: var(--stroke4);
 	}
+	/* 80%{
+		fill:var(--accent-color);
+		stroke : transparent;
+		stroke-width: 0;
+		stroke-dashoffset: -25%;
+		stroke-dasharray: 32% 0;
+		opacity: 0.5;
+	} */
 	100%{
 		fill:var(--accent-color);
 		stroke : transparent;
 		stroke-width: 0;
 		stroke-dashoffset: -25%;
 		stroke-dasharray: 32% 0;
-	}
-}
-
-@keyframes animate-dot {
-	0%,60%{
-		opacity: 0;
-	}
-	100%{
 		opacity: 1;
 	}
 }
+
+
 
 .cover__title {
 	/* font-family: novecento-sans-wide, sans-serif; */
@@ -208,6 +232,14 @@ svg text.dot{
 	font-size: 1.5rem;
 	font-weight: 400;
 	margin: 0;
+	opacity: 0;
+}
+
+@media(max-width:768px)
+{
+	.cover__subtitle{
+		opacity: 1;
+	}
 }
 
 .footer {
