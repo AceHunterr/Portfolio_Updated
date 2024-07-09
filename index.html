@@ -158,12 +158,12 @@
     <!-- <i class="header-toggle d-xxxl-none bi bi-list"></i> -->
     <div>
 
-      <a href="gallery.html">
-      <button class=" gallery-button" >
-        <i class="fas fa-images"></i>
+      
+      <button id="galleryButton" class=" gallery-button" >
+        <i class="fas fa-images"><a href="gallery.html"></a></i>
       </button>
       <span class="gallery-icon-text">Wanna explore my asthetics? <br> Click Here</span>
-    </a>
+    
     </div>
 
     <div class="profile-img">
@@ -805,8 +805,15 @@
   // Open the mailto link
   window.location.href = mailtoLink;
 });
-
   </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("galleryButton").addEventListener("click", function() {
+      window.location.href = '/gallery'; // Adjust the URL as needed
+  });
+});
+</script>
 
 
 </body>

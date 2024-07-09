@@ -107,8 +107,11 @@ requestAnimationFrame(animateCircles);
 
 animateCircles();
 
-
+// console.log("Hello")
 function goGallery() {
     window.location.href = '/gallery'; 
 }
 
+function goHome() {
+        window.location.href = '/'; // Adjust the URL as needed
+    }
